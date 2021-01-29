@@ -3,3 +3,6 @@
 C++ starter code with CMake 
 VsCode 
 Hello
+Testing for Thursday 28/01/2020 Upload TX Austin
+Testing for Friday 29/01/2020 Upload Taipei, Taiwan
+
