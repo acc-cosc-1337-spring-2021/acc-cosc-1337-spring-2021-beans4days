@@ -20,7 +20,3 @@ return num1 * num2;
 }
 
 //int num2;
-
-
-
-
