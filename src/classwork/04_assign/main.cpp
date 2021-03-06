@@ -16,13 +16,13 @@ int main(){
 	//post condition loop - will execute 1 or more times
 	
 	do{
-		std::cout << "\n" << "Enter number -1 to exit.";
+		std::cout << "\n" << "Enter number -1 to exit." <<"/n";
 		std::cout <<"\n" << "Enter number: ";
 		std::cin >> num;
 	
 		std::cout <<"\n" << "Number entered: " << num <<"\n";
 		
-		std::cout <<"Factorial of " << num << "is " << factorial(num) <<"\n";
+		std::cout <<"\n" <<"Factorial of " << num << " is " << factorial(num) <<"\n";
 		
 		// num++; //
 		
