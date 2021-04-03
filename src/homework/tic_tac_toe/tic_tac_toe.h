@@ -28,4 +28,4 @@ private:
     // vector <string> pegs(9, " ");
     // vector <string> pegs{9, " "};
     vector<string> pegs{9, " "};
-    
+};
