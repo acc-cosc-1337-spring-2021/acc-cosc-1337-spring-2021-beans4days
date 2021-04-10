@@ -11,15 +11,22 @@ using std::cin;
 
 int main() 
 {
-	string question;
+	// new
+	string winner;
+	char option ='Y';
+
+	string question ="X";
 	int position;
-	TicTacToe Game;
 	
-	cout << "TicTacToe" <<"\n\n\n";
-	// Prompt the user for the first player.
-	cout <<"Enter x or as o?\n";
-	cin >> question;
-	cout <<"\n";
+do {
+    TicTacToe Game;
+	cout <<"\n" <<"Welcome to TicTacToe" <<"\n\n\n";
+	do {
+	    // Prompt the user for the first player.
+	    cout <<"Enter x or as o?\n";
+	    cin >> question;
+	    cout <<"\n";
+	} while (question != "X" && question != "x" && question != "o" && question != "O");
 	Game.start_game(question);
 	cout <<"\n";
 	Game.display_board();
@@ -37,6 +44,13 @@ int main()
 		cout << "\n";
 	}while(Game.game_over() == false);
 	
-	cout <<"Game Over... " <<"\n";
+	cout <<"Game Over... " <<"\n\n\n";
+	cout <<"AND THE WINNER IS " << Game.get_winner() <<" !!!" <<"\n\n\n";
+	cout <<"Would you like to play another round ?" <<"\n\n";
+	cout <<"Enter the following (y/n): ";
+	cin >> option;
+	cout <<"\n";
+} while (option == 'Y' || option == 'y');
+
 	return 0;
 }
