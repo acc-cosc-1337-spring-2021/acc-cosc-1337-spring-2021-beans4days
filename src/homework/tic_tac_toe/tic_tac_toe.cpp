@@ -6,15 +6,57 @@
 
 #include<iostream>
 #include<string>
-// #include<vector>
+#include<iomanip>
+#include<vector>
 
 using std::string;
-// using std::vector;
+using std::vector;
 
 using std::cout;
 using std::cin;
 
 // new
+std::istream& operator>>(std::istream& in, TicTacToe& Game)
+{
+    int position;
+    cout <<Game.get_player()<<"'s turn." <<"\n";
+    cout <<"Enter position from 1 to 9." <<"\n";
+    cout <<"Number picked: ";
+	in>>position;
+    // User Input Validation for Position
+	while(position < 1 || position > 9)
+	{
+        cout << "Invalid position selected, please re-enter position between 1-9.\n";
+		cout << "Number picked: ";
+		in >> position;
+	}
+    cout << "\n";
+	Game.mark_board(position);
+    return in;
+}
+
+std::ostream& operator<<(std::ostream& out, const TicTacToe& Game)
+{
+    // Iterate vector of strings pegs to 
+    // Display a tic tac toe board in 3x3 format
+    for (int i = 0; i < 9; i++)
+    {
+        out << Game.pegs[i];
+
+        if ((i+1) % 3 == 0)
+        {
+            out <<"\n";
+        }
+        else
+        {
+            out <<" | ";
+        }
+       
+    }
+    return out;
+
+
+}
 
 bool TicTacToe::game_over()
 {
@@ -55,7 +97,7 @@ void TicTacToe::start_game(string first_player)
 
 }
 
-void TicTacToe::display_board()const
+/* void TicTacToe::display_board()const
 {
     // Iterate vector of strings pegs to 
     // Display a tic tac toe board in 3x3 format
@@ -76,7 +118,7 @@ void TicTacToe::display_board()const
     }
 
 
-}
+}*/
 void TicTacToe::mark_board(int position)
 {
     // 1) Mark vector w position -1 equal to player 
@@ -120,7 +162,7 @@ bool TicTacToe::check_board_full()
     bool full = true;
     
     //iterate
-    for(int i = 0; i < pegs.size(); i++)
+    for(int i = 0; i < 9; i++)
     {
         if(pegs[i] == " ") 
             full = false;

@@ -24,7 +24,7 @@ void TicTacToeManager::save_game(TicTacToe Game)
 //friend
 std::ostream& operator<<(std::ostream& out, const TicTacToeManager& manager)
 {
-    for(int i = 0; i <= manager.games.size(); i++)
+    for(int i = 0; i < manager.games.size(); i++)
     {
         cout<<manager.games[i] <<"\n";
     }
