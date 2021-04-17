@@ -1,12 +1,19 @@
 //h
 //tic_tac_toe.h
 //1
+#ifndef TIC_TAC_TOE_H
+#define TIC_TAC_TOE_H
+#include<iostream>
 #include<string>
 #include<vector>
 using std::string;
 using std::vector;
 
-class TicTacToe {
+class TicTacToe 
+{
+friend std::ostream& operator<<(std::ostream& out, const TicTacToe& Game);
+friend std::istream& operator>>(std::istream& in, TicTacToe& Game);
+
 public:
     //bool game_over;
     bool game_over();
@@ -41,3 +48,5 @@ private:
     // new
     string winner; //stores the winner of the game X, O or C.
 };
+
+#endif
