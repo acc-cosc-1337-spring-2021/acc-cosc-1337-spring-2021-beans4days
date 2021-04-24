@@ -22,61 +22,64 @@ using std::cin;
 // new
 std::istream& operator>>(std::istream& in, TicTacToe& Game)
 {
-    int position;
-    cout <<"\n";
-    cout <<Game.get_player()<<"'s turn." <<"\n";
-    cout <<"Enter position from 1 to 9." <<"\n";
-    cout <<"Number picked: ";
-	in>>position;
-    // User Input Validation for Position
-	while(position < 1 || position > 9)
-	{
-        cout << "Invalid position selected, please re-enter position between 1-9.\n";
-		cout << "Number picked: ";
-		in >> position;
-	}
-    cout << "\n";
-	Game.mark_board(position);
+    if (Game.pegs.size() == 9)
+    {
+        int position;
+        cout <<"\n";
+        cout <<Game.get_player()<<"'s turn." <<"\n";
+        cout <<"Enter position from 1 to 9." <<"\n";
+        cout <<"Number picked: ";
+        in>>position;
+        // User Input Validation for Position
+        while(position < 1 || position > 9)
+        {
+            cout << "Invalid position selected, please re-enter position between 1-9.\n";
+            cout << "Number picked: ";
+            in >> position;
+        }
+        cout << "\n";
+        Game.mark_board(position);
+    }
+    else if (Game.pegs.size() != 9)
+    {
+        int position;
+        cout <<"\n";
+        cout <<Game.get_player()<<"'s turn." <<"\n";
+        cout <<"Enter position from 1 to 16." <<"\n";
+        cout <<"Number picked: ";
+        in>>position;
+        // User Input Validation for Position
+        while(position < 1 || position > 16)
+        {
+            cout << "Invalid position selected, please re-enter position between 1-16.\n";
+            cout << "Number picked: ";
+            in >> position;
+        }
+        cout << "\n";
+        Game.mark_board(position);
+    }
+
     return in;
 }
 
 std::ostream& operator<<(std::ostream& out, const TicTacToe& Game)
 {
-    // Iterate vector of strings pegs to 
-    // Display a tic tac toe board in 3x3 format
-    /*for (int i = 0; i < 9; i++)
+    if (Game.pegs.size() == 9) 
     {
-        out << Game.pegs[i];
-
-        if ((i+1) % 3 == 0)
-        {
-            out <<"\n";
-        }
-        else
-        {
-            out <<" | ";
-        }
-       
-    }
-    return out;*/
-    if (Game.pegs.size() == 9)
-    {
-        for (int i = 0; i < 9; i += 3)
-        {
-            out <<Game.pegs[i] << "|" << Game.pegs[i + 1] << "|" << Game.pegs[i + 2] << "|" << "\n";
+        out << " " << Game.pegs[0] << " | " << Game.pegs[1] << " | " << Game.pegs[2] << "\n";
+        out << " " << Game.pegs[3] << " | " << Game.pegs[4] << " | " << Game.pegs[5] << "\n";
+        out << " " << Game.pegs[6] << " | " << Game.pegs[7] << " | " << Game.pegs[8] << "\n";
         
-        }
     }
-    
-    else if(Game.pegs.size() == 16)
+    else if (Game.pegs.size() != 9) 
     {
-        for (int i = 0; i < 16; i += 4)
-        {
-            out << Game.pegs[i] << "|" << Game.pegs[i + 1] << "|" << Game.pegs[i + 2] << "|" << Game.pegs[i + 3]<< "\n";
-        }  
-
-        return out;
+        out << " " << Game.pegs[0] << " | " << Game.pegs[1] << " | " << Game.pegs[2] << " | " << Game.pegs[3] << "\n";
+        out << " " << Game.pegs[4] << " | " << Game.pegs[5] << " | " << Game.pegs[6] << " | " << Game.pegs[7] << "\n";
+        out << " " << Game.pegs[8] << " | " << Game.pegs[9] << " | " << Game.pegs[10] << " | " << Game.pegs[11] << "\n";
+        out << " " << Game.pegs[12] << " | " << Game.pegs[13] << " | " << Game.pegs[14] << " | " << Game.pegs[15] << "\n";
     }
+
+    return out;
 }
 
 bool TicTacToe::game_over()

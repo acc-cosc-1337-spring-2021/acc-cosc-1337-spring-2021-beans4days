@@ -18,7 +18,7 @@ public:
     // Create a constructor with an int parameter named size
     // in constructor, use an initializer list to initialize the vector to 9 or 16 elements
     TicTacToe(){}
-    TicTacToe(int size) : pegs(size*size, " "){}
+    TicTacToe(int size): pegs(size*size, " "){}
 
 
     //bool game_over;
