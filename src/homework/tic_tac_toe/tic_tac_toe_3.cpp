@@ -9,7 +9,24 @@ Win by column if and return true if
 else
 false
 */
-
+bool TicTacToe3::check_column_win() //iterate later for neatness and functionality?
+{
+    if (pegs[0] == pegs[3] && pegs[0] == pegs[6] && pegs[0] != " ")	  
+    {
+        return true;
+    }
+    else if (pegs[1] == pegs[4] && pegs[1] == pegs[7] && pegs[1] != " ")
+    {
+    	return true;
+	}
+	else if (pegs[2] == pegs[5] && pegs[2] == pegs[8] && pegs[2] != " ")
+	{
+		return true;
+	}
+    else {
+        return false;
+    }
+}
 
 
 /*
@@ -21,6 +38,25 @@ Win by row if
 */
 
 
+bool TicTacToe3::check_row_win() // iterate later
+{
+    if (pegs[0] == pegs[1] && pegs[0] == pegs[2] && pegs[0] != " ")
+    {
+        return true;
+    }
+    else if (pegs[3] == pegs[4] && pegs[3] == pegs[5] && pegs[3] != " ") 
+    {
+    	return true;
+	}
+	else if (pegs[6] == pegs[7] && pegs[6] == pegs[8] && pegs[6] != " ")
+	{
+		return true;
+	}
+    else {
+        return false;
+    }
+}
+
 
 /*
 class function check_diagonal_win
@@ -30,3 +66,19 @@ Win diagonally
 6 7 8
 
 */
+
+
+bool TicTacToe3::check_diagonal_win() // for neater come back to iterate
+{
+    if(pegs[0] == pegs[4] && pegs[0] == pegs[8] && pegs[0] != " ") 
+    {
+        return true;
+    }
+    else if (pegs[2] == pegs[4] && pegs[2] == pegs[6] && pegs[2] != " ")
+    {
+    	return true;
+	}
+    else {
+        return false;
+    }
+}

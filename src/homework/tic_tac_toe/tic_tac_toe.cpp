@@ -3,11 +3,15 @@
 //1
 
 #include "tic_tac_toe.h"
+//#include "tic_tac_toe_3.h"
+//#include "tic_tac_toe_4.h"
 
 #include<iostream>
 #include<string>
 #include<iomanip>
 #include<vector>
+#include<memory>
+
 
 using std::string;
 using std::vector;
@@ -19,6 +23,7 @@ using std::cin;
 std::istream& operator>>(std::istream& in, TicTacToe& Game)
 {
     int position;
+    cout <<"\n";
     cout <<Game.get_player()<<"'s turn." <<"\n";
     cout <<"Enter position from 1 to 9." <<"\n";
     cout <<"Number picked: ";
@@ -39,7 +44,7 @@ std::ostream& operator<<(std::ostream& out, const TicTacToe& Game)
 {
     // Iterate vector of strings pegs to 
     // Display a tic tac toe board in 3x3 format
-    for (int i = 0; i < 9; i++)
+    /*for (int i = 0; i < 9; i++)
     {
         out << Game.pegs[i];
 
@@ -53,9 +58,25 @@ std::ostream& operator<<(std::ostream& out, const TicTacToe& Game)
         }
        
     }
-    return out;
+    return out;*/
+    if (Game.pegs.size() == 9)
+    {
+        for (int i = 0; i < 9; i += 3)
+        {
+            out <<Game.pegs[i] << "|" << Game.pegs[i + 1] << "|" << Game.pegs[i + 2] << "|" << "\n";
+        
+        }
+    }
+    
+    else if(Game.pegs.size() == 16)
+    {
+        for (int i = 0; i < 16; i += 4)
+        {
+            out << Game.pegs[i] << "|" << Game.pegs[i + 1] << "|" << Game.pegs[i + 2] << "|" << Game.pegs[i + 3]<< "\n";
+        }  
 
-
+        return out;
+    }
 }
 
 bool TicTacToe::game_over()
@@ -181,55 +202,17 @@ void TicTacToe::clear_board()
 
 bool TicTacToe::check_column_win() //iterate later for neatness and functionality?
 {
-    if (pegs[0] == pegs[3] && pegs[0] == pegs[6] && pegs[0] != " ")	  
-    {
-        return true;
-    }
-    else if (pegs[1] == pegs[4] && pegs[1] == pegs[7] && pegs[1] != " ")
-    {
-    	return true;
-	}
-	else if (pegs[2] == pegs[5] && pegs[2] == pegs[8] && pegs[2] != " ")
-	{
-		return true;
-	}
-    else {
-        return false;
-    }
+    return false;
 }
 
 bool TicTacToe::check_row_win() // iterate later
 {
-    if (pegs[0] == pegs[1] && pegs[0] == pegs[2] && pegs[0] != " ")
-    {
-        return true;
-    }
-    else if (pegs[3] == pegs[4] && pegs[3] == pegs[5] && pegs[3] != " ") 
-    {
-    	return true;
-	}
-	else if (pegs[6] == pegs[7] && pegs[6] == pegs[8] && pegs[6] != " ")
-	{
-		return true;
-	}
-    else {
-        return false;
-    }
+    return false;
 }
 
 bool TicTacToe::check_diagonal_win() // for neater come back to iterate
 {
-    if(pegs[0] == pegs[4] && pegs[0] == pegs[8] && pegs[0] != " ") 
-    {
-        return true;
-    }
-    else if (pegs[2] == pegs[4] && pegs[2] == pegs[6] && pegs[2] != " ")
-    {
-    	return true;
-	}
-    else {
-        return false;
-    }
+    return false;
 }
 
 void TicTacToe::set_winner()
@@ -248,7 +231,6 @@ void TicTacToe::set_winner()
     }
     
 }
-
 string TicTacToe::get_winner() const
 {
     return winner;
