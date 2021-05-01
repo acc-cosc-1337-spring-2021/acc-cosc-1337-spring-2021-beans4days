@@ -7,6 +7,7 @@
 #include "tic_tac_toe_3.h"
 #include "tic_tac_toe_4.h"
 
+#include "tic_tac_toe_data.h"
 /*
 #include <iostream>
 #include <string>
@@ -15,7 +16,8 @@
 
 #include<memory>
 
-
+using std::vector;
+//using std::string;
 using std::unique_ptr;
 
 class TicTacToeManager
@@ -31,6 +33,12 @@ class TicTacToeManager
         
         void get_winner_total(int& o, int& x, int& t);
 
+        ~TicTacToeManager();
+
+        TicTacToeManager() = default;
+
+        TicTacToeManager(TicTacToeData data);
+
     private:
         //vector<string> games{};
         //std::vector<TicTacToe> games;
@@ -39,6 +47,9 @@ class TicTacToeManager
         int o_win = 0;
         int ties = 0;
         void update_winner_count(std::string winner);
+
+        //new
+        TicTacToeData data;
 };
 
 #endif

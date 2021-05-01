@@ -13,6 +13,16 @@ using std::string;
 using std::cout;
 //using std::cin;
 
+TicTacToeManager::TicTacToeManager(TicTacToeData d) : data{d}
+{
+    games = data.get_games();
+
+    for (auto &Game : games)
+    {
+        update_winner_count(Game->get_winner());
+    }
+}
+
 //void TicTacToeManager::save_game(TicTacToe b)
 void TicTacToeManager::save_game(unique_ptr<TicTacToe>& Game)
 {
@@ -87,4 +97,10 @@ std::ostream& operator<<(std::ostream& out, const TicTacToeManager& manager)
 	out <<"Ties: " <<ties<<"\n";
 
     return out;
+}
+
+TicTacToeManager::~TicTacToeManager()
+{
+    std::cout << "\nSaving Games...\n";
+    data.save_games(games);
 }

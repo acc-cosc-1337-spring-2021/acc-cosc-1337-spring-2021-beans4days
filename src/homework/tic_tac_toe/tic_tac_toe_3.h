@@ -9,6 +9,8 @@ class TicTacToe3 : public TicTacToe
 {
 public:
     TicTacToe3() : TicTacToe(3){}
+    //TicTacToe3(std::vector<string> p, string winner) : TicTacToe(pegs, winner){}
+    TicTacToe3(std::vector<string> p, string win) : TicTacToe(p, win){}
 
 
 private:

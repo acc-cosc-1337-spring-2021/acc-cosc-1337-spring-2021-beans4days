@@ -20,6 +20,9 @@ public:
     TicTacToe(){}
     TicTacToe(int size): pegs(size*size, " "){}
 
+    //HW 10 new constructor
+    TicTacToe(vector<string> p, string win) : pegs(p), winner(win){}
+
 
     //bool game_over;
     bool game_over();
@@ -31,6 +34,7 @@ public:
     // new
     //string get_winner(){return winner;}
     string get_winner()const;
+    const vector<string>get_pegs()const{return pegs;}
 
 protected:
     vector<std::string> pegs;
