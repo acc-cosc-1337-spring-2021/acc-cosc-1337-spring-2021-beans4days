@@ -81,7 +81,7 @@ int main()
 		{
 			cout <<"\n" << "Winner is " <<Game->get_winner() <<"!" <<"\n";
 			manager.save_game(Game);
-			manager.get_winner_total(o,x,t);
+			manager.get_winner_total(x,o,t);
 			cout <<"X Score: " << x <<"\n";
 			cout <<"O Score: " << o <<"\n";
 			cout <<"Ties: " << t <<"\n";
@@ -91,7 +91,7 @@ int main()
 			cout  <<"\n" << "It's a DRAW/TIE!" <<"\n";
 			cout << "Winner is " <<Game->get_winner() <<"!" <<"\n";
 			manager.save_game(Game);
-			manager.get_winner_total(o,x,t);
+			manager.get_winner_total(x,o,t);
 			
 			cout <<"\n" <<"X Score: " << x <<"\n";
 			cout <<"O Score: " << o <<"\n";

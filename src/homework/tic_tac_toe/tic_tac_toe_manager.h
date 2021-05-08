@@ -39,7 +39,7 @@ public:
 
     void save_game(unique_ptr<TicTacToe>& Game);
 
-    void get_winner_total(int& o, int& x, int& t);
+    void get_winner_total(int& x, int& o, int& t);
 
     ~TicTacToeManager();
 
