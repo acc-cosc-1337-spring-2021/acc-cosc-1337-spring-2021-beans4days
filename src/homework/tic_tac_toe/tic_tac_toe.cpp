@@ -3,8 +3,8 @@
 //1
 
 #include "tic_tac_toe.h"
-//#include "tic_tac_toe_3.h"
-//#include "tic_tac_toe_4.h"
+#include "tic_tac_toe_3.h"
+#include "tic_tac_toe_4.h"
 
 #include<iostream>
 #include<string>
@@ -18,6 +18,8 @@ using std::vector;
 
 using std::cout;
 using std::cin;
+using std::make_unique;
+using std::unique_ptr;
 
 // new
 std::istream& operator>>(std::istream& in, TicTacToe& Game)
@@ -62,6 +64,7 @@ std::istream& operator>>(std::istream& in, TicTacToe& Game)
     return in;
 }
 
+
 std::ostream& operator<<(std::ostream& out, const TicTacToe& Game)
 {
     if (Game.pegs.size() == 9) 
@@ -80,7 +83,9 @@ std::ostream& operator<<(std::ostream& out, const TicTacToe& Game)
     }
 
     return out;
-}
+} 
+
+
 
 bool TicTacToe::game_over()
 {
@@ -183,7 +188,7 @@ bool TicTacToe::check_board_full()
 	}while (pegs) */
 	
 	//boolean true
-    bool full = true;
+    /*bool full = true;
     
     //iterate
     for(int i = 0; i < 9; i++)
@@ -191,13 +196,26 @@ bool TicTacToe::check_board_full()
         if(pegs[i] == " ") 
             full = false;
     }
-    return full; //return true
+    return full; //return true*/
+    for (size_t i = 0; i < pegs.size(); i++)
+    {
+        if (pegs[i] == " ")
+        {
+            return false;
+        }
+        
+    }
+    return true;
 }
 
 void TicTacToe::clear_board()
 //Initialize to 9 " "(spaces)
 {
-    pegs = {" ", " ", " ", " ", " ", " ", " ", " ", " "};
+    //pegs = {" ", " ", " ", " ", " ", " ", " ", " ", " "};
+    for (std::size_t i = 0; i < pegs.size(); i++)
+    {
+        pegs[i] = " ";
+    }
 }
 
 // new

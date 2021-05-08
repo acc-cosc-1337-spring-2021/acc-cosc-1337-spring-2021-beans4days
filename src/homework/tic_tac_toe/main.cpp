@@ -3,6 +3,7 @@
 #include "tic_tac_toe_manager.h"
 #include "tic_tac_toe_3.h"
 #include "tic_tac_toe_4.h"
+#include "tic_tac_toe_data.h"
 
 #include<iostream>
 #include<iomanip>
@@ -101,7 +102,15 @@ int main()
 		cin >> option;
 		}
 	}	
-	cout << manager;
+	/*
+	manager.save_game(Game);
+	manager.get_winner_total(o,x,t);
+	
+	cout <<"\n" <<"X Score: " << x <<"\n";
+	cout <<"O Score: " << o <<"\n";
+	cout <<"Ties: " << t <<"\n";
+	*/
+	//cout << manager;
 	
 	return 0;
 		

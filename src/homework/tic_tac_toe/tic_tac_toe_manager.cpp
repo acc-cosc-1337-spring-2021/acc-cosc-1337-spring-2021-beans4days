@@ -4,7 +4,7 @@
 
 #include "tic_tac_toe_manager.h"
 
-#include <iostream>
+#include<iostream>
 #include<string>
 #include<vector>
 using std::vector;
@@ -48,10 +48,12 @@ void TicTacToeManager::save_game(unique_ptr<TicTacToe>& Game)
     return out;
 }*/
 
+/*
 std::vector<TicTacToe> games;
 int x_win = 0;
 int o_win = 0;
 int ties = 0;
+*/
 
 
 void TicTacToeManager::get_winner_total(int& o, int& x, int& t)
@@ -59,6 +61,30 @@ void TicTacToeManager::get_winner_total(int& o, int& x, int& t)
     o = o_win;
     x = x_win;
     t = ties;
+}
+
+
+
+//friend
+std::ostream& operator<<(std::ostream& out, const TicTacToeManager& manager)
+{
+    /*for(int i = 0; i < manager.games.size(); i++)
+    {
+        out<<manager.games[i] <<"\n";
+    }*/
+    for(auto& Game : manager.games)
+    {
+        out << *Game;
+
+        out <<"\n";
+    }
+    /*
+    out <<"\n" <<"X Score: " <<x_win<<"\n";
+	out <<"O Score: " <<o_win<<"\n";
+	out <<"Ties: " <<ties<<"\n";
+    */
+
+    return out;
 }
 
 void TicTacToeManager::update_winner_count(std::string winner)
@@ -76,27 +102,6 @@ void TicTacToeManager::update_winner_count(std::string winner)
         ties++;
     }
     
-}
-
-//friend
-std::ostream& operator<<(std::ostream& out, const TicTacToeManager& manager)
-{
-    /*for(int i = 0; i < manager.games.size(); i++)
-    {
-        out<<manager.games[i] <<"\n";
-    }*/
-    for(auto& Game : manager.games)
-    {
-        out << *Game;
-
-        out <<"\n";
-    }
-
-    out <<"\n" <<"X Score: " <<x_win<<"\n";
-	out <<"O Score: " <<o_win<<"\n";
-	out <<"Ties: " <<ties<<"\n";
-
-    return out;
 }
 
 TicTacToeManager::~TicTacToeManager()
