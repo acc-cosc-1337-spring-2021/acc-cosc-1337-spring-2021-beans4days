@@ -1,14 +1,19 @@
 //cpp
 
 //void 
-
+#include "tic_tac_toe.h"
 #include "tic_tac_toe_manager.h"
+#include "tic_tac_toe_data.h"
 
 #include<iostream>
 #include<string>
 #include<vector>
+#include<memory>
+#include<vector>
 using std::vector;
 using std::string;
+
+using std::unique_ptr;
 
 using std::cout;
 //using std::cin;
@@ -21,6 +26,12 @@ TicTacToeManager::TicTacToeManager(TicTacToeData d) : data{d}
     {
         update_winner_count(Game->get_winner());
     }
+}
+
+TicTacToeManager::~TicTacToeManager()
+{
+    std::cout << "\nSaving Games...\n";
+    data.save_games(games);
 }
 
 //void TicTacToeManager::save_game(TicTacToe b)
@@ -56,36 +67,13 @@ int ties = 0;
 */
 
 
-void TicTacToeManager::get_winner_total(int& o, int& x, int& t)
+void TicTacToeManager::get_winner_total(int& x, int& o, int& t)
 {
-    o = o_win;
     x = x_win;
+    o = o_win;
     t = ties;
 }
 
-
-
-//friend
-std::ostream& operator<<(std::ostream& out, const TicTacToeManager& manager)
-{
-    /*for(int i = 0; i < manager.games.size(); i++)
-    {
-        out<<manager.games[i] <<"\n";
-    }*/
-    for(auto& Game : manager.games)
-    {
-        out << *Game;
-
-        out <<"\n";
-    }
-    /*
-    out <<"\n" <<"X Score: " <<x_win<<"\n";
-	out <<"O Score: " <<o_win<<"\n";
-	out <<"Ties: " <<ties<<"\n";
-    */
-
-    return out;
-}
 
 void TicTacToeManager::update_winner_count(std::string winner)
 {
@@ -103,9 +91,25 @@ void TicTacToeManager::update_winner_count(std::string winner)
     }
     
 }
+//friend
 
-TicTacToeManager::~TicTacToeManager()
+std::ostream& operator<<(std::ostream& out, const TicTacToeManager& manager)
 {
-    std::cout << "\nSaving Games...\n";
-    data.save_games(games);
+    /*for(int i = 0; i < manager.games.size(); i++)
+    {
+        out<<manager.games[i] <<"\n";
+    }*/
+    for(auto& Game: manager.games)
+    {
+        out << *Game;
+
+        out <<"\n";
+    }
+    
+    out <<"\n" <<"X Score: " << manager.x_win <<"\n";
+	out <<"O Score: " << manager.o_win <<"\n";
+	out <<"Ties: " << manager.ties <<"\n";
+    
+
+    return out;
 }

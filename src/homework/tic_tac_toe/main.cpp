@@ -17,6 +17,9 @@ using std::unique_ptr;
 using std::make_unique;
 
 
+//TicTacToeData data;
+//TicTacToeManager manager = TicTacToeManager(data);
+
 int main()
 {
 	
@@ -35,7 +38,8 @@ int main()
 	
 	while(option == "Y" || option == "y")
 	{
-		cout << "Enter 1 for 3x3 or 2 for 4x4." <<"\n";
+		cout << "\n\n";
+		cout << "Enter 1 for 3x3 or 2 for 4x4." <<"\n\n";
 		cout << "Select 1 or 2 for Game Type: ";
 		cin >> type;
 
@@ -48,7 +52,7 @@ int main()
 			Game = make_unique<TicTacToe4>();
 		}
 		
-		cout << "Please enter as player X or O ? (CAPITAL LETTERS)\n";
+		cout <<"\n" << "Please enter as player X or O ? (CAPITAL LETTERS)\n";
 		cin >> question;
 		cout <<"\n" << "You have enetered: ";
 		cout << question <<"\n";
@@ -110,7 +114,7 @@ int main()
 	cout <<"O Score: " << o <<"\n";
 	cout <<"Ties: " << t <<"\n";
 	*/
-	//cout << manager;
+	cout << manager;
 	
 	return 0;
 		
